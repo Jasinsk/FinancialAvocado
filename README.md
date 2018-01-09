@@ -1,5 +1,3 @@
-kalkulator-wydatkow
-===================
+# Financial Avocado
 
-A Symfony project created on December 31, 2017, 5:49 pm.
-"# FinancialAvocado" 
+A simple finance managing website built using Symfony framework.
