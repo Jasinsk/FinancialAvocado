@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+    <h1>Expense list</h1>
+<br>
+<div class="container">
+    <div class=" col-md-12">
+        <table  class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Amount</th>
+                    <th>Priority</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.title }}</td>
+                    <td>{{ expense.amount }} zł</td>
+                    <td>{{ expense.priority }}</td>
+                    <td>{% if expense.date %}{{ expense.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ expense.category.name }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('expense_show', { 'id': expense.id }) }}">Delete</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('expense_edit', { 'id': expense.id }) }}">Edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

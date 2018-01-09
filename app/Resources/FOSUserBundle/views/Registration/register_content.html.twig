@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class=" col-md-4">
+
+    <h1>Register</h1>
+
+    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        {{ form_widget(form) }}
+        <div>
+            <input class="btn btn-default" type="submit" id="_submit" name="_submit" value="{{ 'Submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+    </form>
+    </div>
+</div>

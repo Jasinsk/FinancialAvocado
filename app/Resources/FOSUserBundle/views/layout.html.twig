@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Financial Avocado{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <style>
+            body {
+                background: url(https://images.unsplash.com/photo-1458682625221-3a45f8a844c7?auto=format&fit=crop&w=1934&q=80);
+                background-size: cover;
+                background-position: center;
+
+            }
+
+            body,
+            html {
+                width: 100%;
+                height: 100%;
+                font-family: "Lato";
+                color: White;
+            }
+
+            h1 {
+                font-weight: 700;
+                font-size: 5em;
+            }
+
+
+            .content{
+                padding-top: 25%;
+                text-align: center;
+                text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                0px 8px 13px rgba(0,0,0,0.1),
+                0px 18px 23px rgba(0,0,0,0.1);
+            }
+
+            hr {
+                width: 400px;
+                border-top: 1px solid #f8f8f8;
+                border-bottom: 1px solid rgba(0,0,0,0.2);
+            }
+
+            .navbar-fixed-left {
+                width: 8%;
+                position: fixed;
+                padding-top: 30px;
+                border-radius: 0;
+                height: 100%;
+            }
+
+            .navbar-fixed-left .navbar-nav > li {
+                float: none;  /* Cancel default li float: left */
+                width: 139px;
+            }
+
+            .navbar-fixed-left + .container {
+                padding-left: 160px;
+            }
+            h1{
+                text-align: center;
+                padding-top: 40px;
+            }
+            table{
+                margin-left: 15%;
+            }
+            form{
+                margin-top: 100px;
+                text-align: center;
+                color: black;
+            }
+            a{
+                color: white;
+            }
+            .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+                background-color: darkgray;
+                color: white;
+            }
+            </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><i class="fa fa-pagelines" aria-hidden="true"></i> Finanacial Avocado</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/expense">Home</a></li>
+                        <li><a href="/about-us">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">Logout  <i class="fa fa-user-times"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+
+        {% for type, messages in app.session.flashBag.all %}
+            {% for message in messages %}
+                <div class="{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+
+    </body>
+</html>

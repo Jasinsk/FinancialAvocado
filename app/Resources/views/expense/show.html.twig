@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Delete Expense</h1>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-3">
+    <table id="t01" class="table">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ expense.title }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ expense.amount }}</td>
+            </tr>
+            <tr>
+                <th>Priority</th>
+                <td>{{ expense.priority }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if expense.date %}{{ expense.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+        <br>
+    {% form_theme delete_form 'bootstrap_3_layout.html.twig' %}
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+{% endblock %}

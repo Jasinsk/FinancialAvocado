@@ -1,0 +1,28 @@
+# Learn more about services, parameters and containers at
+# https://symfony.com/doc/current/service_container.html
+parameters:
+    #parameter_name: value
+
+services:
+    app.form.type.income:
+        class: AppBundle\Form\IncomeType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type }
+
+    app.form.type.category:
+        class: AppBundle\Form\CategoryType
+        tags:
+            - { name: form.type }
+
+    app.form.type.expense:
+        class: AppBundle\Form\ExpenseType
+        arguments: ['@doctrine.orm.entity_manager', '@security.token_storage']
+        tags:
+            - { name: form.type }
+
+    app.form.type.filter:
+        class: AppBundle\Form\FilterFormType
+        arguments: ['@doctrine.orm.entity_manager', '@security.token_storage']
+        tags:
+            - { name: form.type }
