@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
+        <link href="{{ asset('app/Resources/views/main.css') }}" rel="stylesheet" type="text/css"/>
         <style>
             body {
                 background: url(https://images.unsplash.com/photo-1495815571604-8f4858cd8767?auto=format&fit=crop&w=1491&q=80);
@@ -52,6 +52,7 @@
 
             .navbar-fixed-left {
                 width: 8%;
+                min-width: 110px;
                 position: fixed;
                 padding-top: 30px;
                 border-radius: 0;
@@ -88,6 +89,8 @@
                 background-color: darkgray;
                 color: white;
             }
+
+
 
 
         </style>
