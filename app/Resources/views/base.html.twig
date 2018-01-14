@@ -1,107 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
+    {% extends "style2.html.twig" %}
+{% block style %}
 
-        <title>{% block title %}Financial Avocado{% endblock %}</title>
-        <link rel="shortcut icon" type="image/x-icon" href="../../../web/favicon.ico" />
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-        <link href="{{ asset('app/Resources/views/main.css') }}" rel="stylesheet" type="text/css"/>
-        <style>
-            body {
-                background: url(https://images.unsplash.com/photo-1495815571604-8f4858cd8767?auto=format&fit=crop&w=1491&q=80);
-                background-size: cover;
-                background-position: center;
-
-            }
-
-            body,
-            html {
-                width: 100%;
-                height: 100%;
-                font-family: "Lato";
-                color: white;
-            }
-
-            h1 {
-                font-weight: 700;
-                font-size: 5em;
-                text-align: center;
-                padding-top: 70px;
-            }
-            h2{
-                font-weight: 500;
-                font-size: 3em;
-                text-align: center;
-            }
-            .content{
-                padding-top: 25%;
-                text-align: center;
-                text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-                0px 8px 13px rgba(0,0,0,0.1),
-                0px 18px 23px rgba(0,0,0,0.1);
-            }
-
-            hr {
-                width: 400px;
-                border-top: 1px solid #f8f8f8;
-                border-bottom: 1px solid rgba(0,0,0,0.2);
-            }
-
-            .navbar-fixed-left {
-                width: 8%;
-                min-width: 110px;
-                position: fixed;
-                padding-top: 30px;
-                border-radius: 0;
-                height: 100%;
-            }
-
-            .navbar-fixed-left .navbar-nav > li {
-                float: none;  /* Cancel default li float: left */
-                width: 139px;
-            }
-
-            .navbar-fixed-left + .container {
-                padding-left: 160px;
-            }
-            table#t01 {
-                text-align: left;
-                padding-left: 10%;
-            }
-            form {
-                text-align: center;
-                color: darkgray;
-                padding-top: 50px;
-            }
-            a {
-                color: white;
-            }
-
-            p{
-                font-size: large;
-                text-align: center;
-                padding-top: 40px;
-            }
-            .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-                background-color: darkgray;
-                color: white;
-            }
+{% endblock %}
+{% block body %}
 
 
-
-
-        </style>
-    </head>
-    <body>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -120,7 +28,14 @@
         </div>
     </nav>
 {% if is_granted('ROLE_USER') %}
+    <!--
         <nav class="navbar navbar-default navbar-fixed-left">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <ul class="nav navbar-nav ml-auto">
                 <li><a href="/expense/new">Add Expense</a></li>
                 <li><a href="/expense/income/new">Add Income</a></li>
@@ -129,11 +44,28 @@
                 <li><a href="/category/new">Add Category</a></li>
             </ul>
         </nav>
-    {% endif %}
-        {% block body %}{% endblock %}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+--><br>
+    <br>
+    <br>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/expense/new">Add Expense</a>
+        <a href="/expense/income/new">Add Income</a>
+        <a href="/tranche">Advanced analitics</a>
+        <a href="/category">Category list</a>
+        <a href="/category/new">Add Category</a>
+    </div>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Tools</span>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "150px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+{% endif %}
+{% endblock %}

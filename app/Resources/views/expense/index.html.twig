@@ -4,10 +4,12 @@
 {% endblock %}
 
 {% block body %}
+{{ parent() }}
     <h1>Expense list</h1>
 <br>
 <div class="container">
-    <div class=" col-md-12">
+    <div class="col-6 col-sm-1 col-md-1"></div>
+    <div class="col-6 col-sm-10 col-md-10">
         <table  class="table">
             <thead>
                 <tr>

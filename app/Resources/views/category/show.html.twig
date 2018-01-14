@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{{ parent() }}
     <h1>Category</h1>
-
-    <table>
+<br><br><br>
+<br>
+<div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <table id="t01" class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
             <tr>
                 <th>Name</th>
                 <td>{{ category.name }}</td>
@@ -16,17 +17,7 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('category_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('category_edit', { 'id': category.id }) }}">Edit</a>
-        </li>
-        <li>
             {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
 {% endblock %}
