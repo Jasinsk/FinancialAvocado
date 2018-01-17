@@ -20,10 +20,29 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/about-us", name="about_us")
-     */
+ * @Route("/about-us", name="about_us")
+ */
     public function aboutUsAction()
     {
         return $this->render('default/about-us.html.twig');
+    }
+
+    /**
+     * @Route("/chat", name="chat")
+     */
+    public function chatAction()
+    {
+        return $this->render('default/chat.html.php');
+    }
+
+    public function styleChange($theme)
+    {
+        if ($theme) {
+            $theme = False;
+        }
+        else{
+            $theme = True;
+        }
+        return $theme;
     }
 }
