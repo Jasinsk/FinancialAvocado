@@ -32,7 +32,7 @@ class DefaultController extends Controller
      */
     public function chatAction()
     {
-        return $this->render('default/chat.html.php');
+        return $this->render('default/chat.html.twig');
     }
 
     public function styleChange($theme)
