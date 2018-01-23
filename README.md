@@ -13,4 +13,10 @@ Projekt został stworony z wykorzystaiem Framework'u Symfony 2.8. Dodatkowo wyko
  - php 5.3.9
  - composer 1.5.6
  
+### Instalacja:
+Aby dokonać instalacji projektu należy wykonać komendę:
+```bash
+$ composer create-project symfony/FinancialAvocado
+```
+ 
  
