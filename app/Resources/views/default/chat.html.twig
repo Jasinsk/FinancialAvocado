@@ -15,7 +15,7 @@
             padding-top: 70px;}
 
         input, textarea  { font-family: courier new; font-size: 12px; }
-        #content         { width:800px; text-align:left; margin-left: 28%; font-family: Calibri }
+        #content         { width:800px; text-align:left; margin-left: 30%; font-family: Calibri }
 
         #chatwindow      { border:1px solid #aaaaaa; padding:4px; background:#232D2F; color:white;}
         #chatnick        { border: none; border-bottom:1px solid #aaaaaa; padding:4px; background:lightgray;}
@@ -46,19 +46,17 @@
 </html>
 
 <script type="text/javascript">
-    /* most simple ajax chat script (www.linuxuser.at) (GPLv2) */
+
     var nick_maxlength=10;
     var http_request=false;
     var http_request2=false;
     var intUpdate;
 
-    /* http_request for writing */
     function ajax_request(url){http_request=false;if(window.XMLHttpRequest){http_request=new XMLHttpRequest();if(http_request.overrideMimeType){http_request.overrideMimeType('text/xml');}}else if(window.ActiveXObject){try{http_request=new ActiveXObject("Msxml2.XMLHTTP");}catch(e){try{http_request=new ActiveXObject("Microsoft.XMLHTTP");}catch(e){}}}
         if(!http_request){alert('Giving up :( Cannot create an XMLHTTP instance');return false;}
         http_request.onreadystatechange=alertContents;http_request.open('GET',url,true);http_request.send(null);}
     function alertContents(){if(http_request.readyState==4){if(http_request.status==200){rec_response(http_request.responseText);}else{}}}
 
-    /* http_request for reading */
     function ajax_request2(url){http_request2=false;if(window.XMLHttpRequest){http_request2=new XMLHttpRequest();if(http_request2.overrideMimeType){http_request2.overrideMimeType('text/xml');}}else if(window.ActiveXObject){try{http_request2=new ActiveXObject("Msxml2.XMLHTTP");}catch(e){try{http_request2=new ActiveXObject("Microsoft.XMLHTTP");}catch(e){}}}
         if(!http_request2){alert('Giving up :( Cannot create an XMLHTTP instance');return false;}
         http_request2.onreadystatechange=alertContents2;http_request2.open('GET',url,true);http_request2.send(null);}
@@ -66,7 +64,7 @@
 
     /* chat stuff */
     chatmsg.focus()
-    var show_newmsg_on_bottom=2;     /* set to 0 to let new msg´s appear on top */
+    var show_newmsg_on_bottom=0;     /* set to 0 to let new msg´s appear on top */
     var waittime=3000;        /* time between chat refreshes (ms) */
 
     intUpdate=window.setTimeout("read_cont();", waittime);
